@@ -1,42 +1,41 @@
-print("日期      服装名称       价格/件      本月库存数量      销售量/每日")
-print("1号      羽绒服          253.6        500              10")
-print("2号      牛仔裤           86.3         600             60")
-print("3号      风衣            96.8          335             43")
-print("4号      皮草            135.9         855             63")
-print("5号      T恤             65.8         632              63")
-print("6号      马甲            49.3          562             120")
-print("7号      牛仔裤           86.3         600              72")
-print("8号       羽绒服          253.6         500             69")
-print("9号       牛仔裤          86.3          600             35")
-print("10号      羽绒服          253.6         500             140")
-print("11号      牛仔裤           86.3          600             90")
-print("12号      皮草            135.9         855             24")
-print("13号      小西装           65.8         632             45")
-print("14号       风衣            96.8         335             25")
-print("15号       牛仔裤           86.3         600            60")
-print("16号       T恤             65.8         632            129")
-print("17号        羽绒服          253.6        500            10")
-print("18号        小西装          96.8        335             43")
-print("19号        T恤            65.8         632             63")
-print("20号        皮衣           86.3         600             60")
-print("21号         皮草          135.9        855             63")
-print("22号        风衣            96. 8       632             58")
-print("24号         牛仔裤         86.3         600            140")
-print("25号         T恤           65.8         632             48")
-print("26号         小西装         96.8         335             43")
-print("27号         皮草          135.9         855             57")
-print("28号         羽绒服         263.6        500             10")
-print("29号         T恤           65.8         632             63")
-print("30号         风衣           96.8         335             78")
-print("总金额：1984006")
-print("平均每天买6613.353333")
-print("羽绒服占比：",(2500/17116*100))
-print("牛仔裤占比：",(4800/17116*100))
-print("风衣占比：",(2010/17116*100))
-print("T恤占比：",(4424/17116*100))
-print("皮草占比：",(543.6/17116*100))
-print("羽绒服占比：",(253.6/3506.4*100))
-print("牛仔裤占比：",(86.3/3506.4*100))
-print("风衣占比：",(96.8/3506.4*100))
-print("T恤占比：",(65.8/3506.4*100)) 
-print("皮草占比：",(135.9/3506.4*100))
+import xlrd
+wb = xlrd.open_workbook(filename=r"C:\Users\lenovo\Desktop\2020年每个月的销售情况.xlsx",encoding_override=True)
+sheet1 = book.sheet_by_index(0)
+rows,cols = sheet1.nrows,sheet1.ncols
+for row in range(rows):
+    for col in range(cols):
+        print(sheet1.cell(row,col).value,end='')
+    print('')
+sumcount=0;
+for i in range(1,31):
+    sumcount+=sheet1.cell(i,4).value
+print("销售量：",sumcount)
+sumoney =0
+for j in range(1,31):
+    sumoney+=sheet1.cell(j,2).value*sheet1.cell(j,4).value
+print("总销售额：",sumoney)
+print("平均销售量：",sumcount/30)
+
+y,n,f,p,t,c =0,0,0,0,0,0
+for o in range(1,31):
+    if sheet1.cell(o,1).value=='羽绒服':
+        y +=sheet1.cell(o,4).value
+    elif sheet1.cell(o,1).value=='牛仔裤':
+        n += sheet1.cell(o, 4).value
+    elif sheet1.cell(o, 1).value == '风衣':
+        f += sheet1.cell(o, 4).value
+    elif sheet1.cell(o, 1).value == '皮草':
+        p += sheet1.cell(o, 4).value
+    elif sheet1.cell(o, 1).value == 'T血':
+        t += sheet1.cell(o, 4).value
+    elif sheet1.cell(o, 1).value == '衬衫':
+        c += sheet1.cell(o, 4).value
+
+    print('羽绒服销售占比：', 253.6 * y / sumoney * 100, '%')
+    print('牛仔裤销售占比：', 86.3 * n / sumoney * 100, '%')
+    print('风衣销售占比：', 96.8 * f / sumoney * 100, '%')
+    print('皮草销售占比：', 135.9 * p / sumoney * 100, '%')
+    print('T血销售占比：', 65.8 * t / sumoney * 100, '%')
+    print('衬衫销售占比：', 49.3 * c / sumoney * 100, '%')
+
+
