@@ -1,8 +1,9 @@
 import xlrd
 import pymysql
-wb=xlrd.open_workbook(filename=r"C:\Users\lenovo\Desktop\2020年每个月的销售情况.xlsx",encoding_override=True)
-con=pymysql.connect(host="localhost",user="root",password="root",database="excel")
-cursor=con.cursor()
+wb=xlrd.open_workbook(r"C:\Users\lenovo\Desktop\2020年每个月的销售情况.xlsx",encoding_override=True)
+con=pymysql.connect(host="localhost",user="root",password="123456",database="excel",charset="utf8")
+cursole=con.cursor()
+console.execute("drop table if EXISTS income")
 v=0
 excel=['1Jan','2Feb','3Mar','4Apr','5May','6Jun','7Jul','8Aug','9Sep','10Oct','11Nov','12Dec']
 for i in excel:
