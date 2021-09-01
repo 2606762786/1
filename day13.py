@@ -1,14 +1,31 @@
-def getDate():
-    file = open(file=r"baidu_x_system.log",mode="r+",encoding="utf-8")
-    dates = file.readlines()
-    list1 = []
-    for i in dates:
-        list1.append(i.split(" ")[0])
-    file.close()
-    return date
+#taobao
 
-list2 = set(list1)
-s = 0
-ip = ""
-    for i in list2:
-        print(ip,"最多出现了",s,"次".format(i,list1.count(i))
+from selenium import webdriver
+import time
+driver = webdriver.firefox()
+driver.get("http://www.taobao.com")
+driver.maximize_window()
+driver.find_element_by_class_name("").click()
+time.sleep(10)
+driver.find_element_by_id("").click()
+driver.find_element_id("username").send_keys("")
+driver.find_element_by_id("password").send_keys("")
+driver.find_elemeynt_by_id("").click()
+
+
+
+#jingdong
+from selenium import webdriver
+import time
+driver = webdriver.firefox()
+driver.get("http://www.jd.com/")
+driver.maximize_window()
+driver.find_element_by_partial_link_test("").click()
+driver.find_element_by_partial_link_test("").click()
+driver.find_element_by_id("username").send_keys("")
+driver.find_element_by_id("password").send_keys("")
+driver.find_element_by_id("").click()
+time.sleep(10)
+driver.find_element_by_id("").send_keys("")
+driver.find_element_by_class_name_("").send_keys("")
+driver.find_element_by_class_name_("").send_keys("")
